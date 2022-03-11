@@ -68,7 +68,7 @@ class student
 int main()
 {
 	int p;
-	setlocale(LC_ALL, "Russian");
+	setlocale(LC_ALL, "Russian"); //sdsadasdadadsad
 	student a;
 	a.setname("Влад");
 	a.setkurs(4);

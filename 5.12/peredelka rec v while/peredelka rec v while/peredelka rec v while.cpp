@@ -42,7 +42,7 @@ double stepen(int x, int n) {
     if (n < 0) {
         n = -n;
         while (n > 1) {
-            res *= x;
+            res *= x;//sdsdads
             n--;
         }
         return 1.0 / res;
