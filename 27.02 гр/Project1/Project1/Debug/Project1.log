@@ -1,0 +1,9 @@
+﻿  MyForm.cpp
+C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Project1\MyForm.h(184,9): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Project1\MyForm.h(194,9): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Project1\MyForm.h(211,18): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Project1\MyForm.h(212,20): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Project1\MyForm.h(213,18): warning C4244: инициализация: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Project1\MyForm.cpp(6,32): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  Project1.vcxproj -> C:\Users\igorm\Desktop\C++\27.02 гр\Project1\Debug\Project1.exe
