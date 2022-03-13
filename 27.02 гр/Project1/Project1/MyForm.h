@@ -1,5 +1,6 @@
 #pragma once
-
+#include <string>
+#include <cmath>
 namespace Project1 {
 
 	using namespace System;
@@ -8,6 +9,7 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace std;
 
 	/// <summary>
 	/// Сводка для MyForm
@@ -49,6 +51,9 @@ namespace Project1 {
 	private: System::Windows::Forms::TextBox^ textBoxFirstNumber;
 
 	private: System::Windows::Forms::TextBox^ textBoxAnswer;
+	private: System::Windows::Forms::Button^ buttonOperator_2;
+	private: System::Windows::Forms::TextBox^ textBoxAnswer_2;
+	private: System::Windows::Forms::TextBox^ textBoxMain_2;
 
 	protected:
 
@@ -74,6 +79,9 @@ namespace Project1 {
 			this->textBoxSecondNumber = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxFirstNumber = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxAnswer = (gcnew System::Windows::Forms::TextBox());
+			this->buttonOperator_2 = (gcnew System::Windows::Forms::Button());
+			this->textBoxAnswer_2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxMain_2 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -152,11 +160,38 @@ namespace Project1 {
 			this->textBoxAnswer->Size = System::Drawing::Size(371, 22);
 			this->textBoxAnswer->TabIndex = 9;
 			// 
+			// buttonOperator_2
+			// 
+			this->buttonOperator_2->Location = System::Drawing::Point(563, 291);
+			this->buttonOperator_2->Name = L"buttonOperator_2";
+			this->buttonOperator_2->Size = System::Drawing::Size(371, 51);
+			this->buttonOperator_2->TabIndex = 10;
+			this->buttonOperator_2->Text = L"Итог";
+			this->buttonOperator_2->UseVisualStyleBackColor = true;
+			this->buttonOperator_2->Click += gcnew System::EventHandler(this, &MyForm::buttonOperator_2_Click);
+			// 
+			// textBoxAnswer_2
+			// 
+			this->textBoxAnswer_2->Location = System::Drawing::Point(563, 373);
+			this->textBoxAnswer_2->Name = L"textBoxAnswer_2";
+			this->textBoxAnswer_2->Size = System::Drawing::Size(371, 22);
+			this->textBoxAnswer_2->TabIndex = 11;
+			// 
+			// textBoxMain_2
+			// 
+			this->textBoxMain_2->Location = System::Drawing::Point(563, 247);
+			this->textBoxMain_2->Name = L"textBoxMain_2";
+			this->textBoxMain_2->Size = System::Drawing::Size(371, 22);
+			this->textBoxMain_2->TabIndex = 12;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1074, 525);
+			this->Controls->Add(this->textBoxMain_2);
+			this->Controls->Add(this->textBoxAnswer_2);
+			this->Controls->Add(this->buttonOperator_2);
 			this->Controls->Add(this->textBoxAnswer);
 			this->Controls->Add(this->textBoxFirstNumber);
 			this->Controls->Add(this->textBoxSecondNumber);
@@ -224,5 +259,49 @@ namespace Project1 {
 			this->textBoxAnswer->Text = System::Convert::ToString(FirstNumber * SecondNumber);
 		}
 	}
+private: System::Void buttonOperator_2_Click(System::Object^ sender, System::EventArgs^ e) {
+	int Xleft, Xright;
+	char Operation;
+	bool Switch = true;
+	String^ Virajenie = System::Convert::ToString(this->textBoxMain_2->Text);
+	for (int i = 0; i < Virajenie->Length; i++) {
+		if (Virajenie[i] >= '0' && Virajenie[i] <= '9') {
+			if (Switch) Xleft = Xleft * 10 + (Virajenie[i] - '0');
+			else Xright = Xright * 10 + (Virajenie[i] - '0');
+		}
+		else {
+			Operation = Virajenie[i];
+			/*if (Virajenie[i] == '!') {
+				break;
+			}*/
+			Switch = !Switch;
+		}
+	}
+	if (Operation == '+') {
+		this->textBoxAnswer_2->Text = System::Convert::ToString(Xleft+Xright);
+	}
+	else if (Operation == '-') {
+		this->textBoxAnswer_2->Text = System::Convert::ToString(Xleft - Xright);
+	}
+	else if (Operation == ':' || Operation == ':') {
+		this->textBoxAnswer_2->Text = System::Convert::ToString(Xleft / Xright);
+	}
+	else if (Operation == '*') {
+		this->textBoxAnswer_2->Text = System::Convert::ToString(Xleft * Xright);
+	}
+	else if (Operation == '^') {
+		this->textBoxAnswer_2->Text = System::Convert::ToString(pow(Xleft,Xright));
+	}
+	else if (Operation == '%') {
+		this->textBoxAnswer_2->Text = System::Convert::ToString(Xleft%Xright);
+	}
+	else if (Operation == '!') {
+		int fac = 1;
+		for (int i = 1; i <= Xleft; i++) {
+			fac *= i;
+		}
+		this->textBoxAnswer_2->Text = System::Convert::ToString(fac);
+	}
+}
 };
 }
